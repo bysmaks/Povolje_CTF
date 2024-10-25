@@ -1,6 +1,5 @@
 from pwn import *
 from tqdm import tqdm
-import pickle
 import networkx as nx
 
 def find_eulerian_cycle(data):

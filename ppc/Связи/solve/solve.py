@@ -14,7 +14,7 @@ def find_eulerian_cycle(data):
 
 
 def start_client():
-    client_socket = remote(input("remote adress: "), int(input("port: ")))
+    client_socket = remote(input("Remote addr: "), int(input("Port: ")))
 
     for i in tqdm(range(300)):
         data = client_socket.recvuntil("\nО".encode())[:-3].decode().replace(":", "")

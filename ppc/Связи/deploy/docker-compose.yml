@@ -1,0 +1,8 @@
+services:
+  ppc_task_wires:
+    build: .
+    restart: always
+    ports:
+     - "9090:9090"
+    environment:
+      - FLAG=ctf{n1c3_s0lv3_c0mput3r_n3tw0rk_pr0bl3m}

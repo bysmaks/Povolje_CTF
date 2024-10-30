@@ -1,0 +1,9 @@
+services:
+  web_hard_password:
+    build: .
+    restart: always
+    ports:
+     - "80:80"
+    environment:
+      - SERVER_NAME=localhost
+      - FLAG=ctf{h4ck1ng_h4ck3rs_1s_f4n}

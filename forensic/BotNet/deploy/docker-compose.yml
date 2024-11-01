@@ -1,0 +1,31 @@
+services:
+
+  iot-device:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile.bot_IoT
+    environment:
+      - MQTT_BROKER=158.160.74.201
+      - MQTT_PORT=1883
+      - MQTT_DATA_TOPIC=sensor_data
+      - MQTT_RESPONSE_TOPIC=sensor_response
+
+  server:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile.bot_server
+    environment:
+      - MQTT_BROKER=158.160.74.201
+      - MQTT_PORT=1883
+      - MQTT_DATA_TOPIC=sensor_data
+      - MQTT_RESPONSE_TOPIC=sensor_response
+
+  attack-service:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile.bot_getflag
+    environment:
+      - MQTT_BROKER=158.160.74.201
+      - MQTT_PORT=1883
+      - MQTT_RESPONSE_TOPIC=sensor_response
+      - ATTACK_STRING=ctf{ATtack_serVer_wh1t_u_T2thBrush}

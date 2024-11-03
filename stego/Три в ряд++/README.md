@@ -23,4 +23,4 @@
 
 ## Флаг
 
-`ctf{NO9ycEP1dhgkccSYpvuAmstyqCrAa7kAIk4yeXuYPheiWLFarMXNtYUesElWNg0YfIJs4rN6CXzQLnZ7R93n2hhrd`kUhjvx}
+`ctf{NO9ycEP1dhgkccSYpvuAmstyqCrAa7kAIk4yeXuYPheiWLFarMXNtYUesElWNg0YfIJs4rN6CXzQLnZ7R93n2hhrdkUhjvx}`

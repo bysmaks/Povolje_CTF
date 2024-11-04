@@ -1,0 +1,5 @@
+requests
+uvicorn
+gunicorn
+fastapi
+paramiko

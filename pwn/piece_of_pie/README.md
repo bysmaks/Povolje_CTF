@@ -1,4 +1,4 @@
-# piece_of_pie | EASY | PWN
+# piece_of_pie | MEDUIM | PWN
 
 ## Информация
 

@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+cat flag
+https://attacker.host

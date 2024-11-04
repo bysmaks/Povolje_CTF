@@ -5,7 +5,7 @@ services:
       context: ./bot
       dockerfile: Dockerfile.bot_IoT
     environment:
-      - MQTT_BROKER=158.160.74.201
+      - MQTT_BROKER=88.218.67.190
       - MQTT_PORT=1883
       - MQTT_DATA_TOPIC=sensor_data
       - MQTT_RESPONSE_TOPIC=sensor_response
@@ -15,7 +15,7 @@ services:
       context: ./bot
       dockerfile: Dockerfile.bot_server
     environment:
-      - MQTT_BROKER=158.160.74.201
+      - MQTT_BROKER=88.218.67.190
       - MQTT_PORT=1883
       - MQTT_DATA_TOPIC=sensor_data
       - MQTT_RESPONSE_TOPIC=sensor_response
@@ -25,7 +25,7 @@ services:
       context: ./bot
       dockerfile: Dockerfile.bot_getflag
     environment:
-      - MQTT_BROKER=158.160.74.201
+      - MQTT_BROKER=88.218.67.190
       - MQTT_PORT=1883
       - MQTT_RESPONSE_TOPIC=sensor_response
       - ATTACK_STRING=ctf{ATtack_serVer_wh1t_u_T2thBrush}

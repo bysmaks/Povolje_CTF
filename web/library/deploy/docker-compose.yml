@@ -1,0 +1,109 @@
+services:
+  web-app:
+    build:
+      context: .
+    volumes:
+      - ./service/db:/service/db
+      - vault:/vault/books
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - redis
+    mem_limit: 1G
+    memswap_limit: 1G
+    cpu_count: 1
+    pids_limit: 128
+    ulimits:
+      nofile:
+        soft: 32768
+        hard: 32768
+  redis:
+    image: redis:7.0.5-alpine
+    restart: unless-stopped
+    hostname: redis
+    volumes:
+      - vault:/vault/books
+    mem_limit: 1G
+    memswap_limit: 1G
+    cpu_count: 1
+    pids_limit: 128
+    ulimits:
+      nofile:
+        soft: 8192
+        hard: 8192
+  worker:
+    build:
+      context: .
+    hostname: worker
+    entrypoint: celery
+    restart: unless-stopped
+    command: -A celery_app.app worker --loglevel=info
+    volumes:
+      -  vault:/vault/books
+      - ./service/db:/service/db
+    env_file:
+      - .env
+    links:
+      - redis
+      - web-app
+    depends_on:
+      - redis
+      - web-app
+    mem_limit: 1G
+    memswap_limit: 1G
+    pids_limit: 2048
+    ulimits:
+      nofile:
+        soft: 16384
+        hard: 16384
+  worker-cleaner:
+    build:
+      context: .
+    hostname: worker_cleaner
+    entrypoint: celery
+    restart: unless-stopped
+    command: -A celery_app.app beat --loglevel=info
+    volumes:
+      - vault:/vault/books
+      - ./service/db:/service/db
+    env_file:
+      - .env
+    links:
+      - redis
+      - web-app
+    depends_on:
+      - redis
+      - web-app
+    mem_limit: 1G
+    memswap_limit: 1G
+    pids_limit: 512
+    ulimits:
+      nofile:
+        soft: 16384
+        hard: 16384
+  nginx:
+      restart: unless-stopped
+      build:
+          context: .
+          dockerfile: nginx.Dockerfile
+      environment:
+          - SERVER_PORT=${SERVER_PORT}
+      ports:
+          - ${SERVER_PORT}:80
+      depends_on:
+          - web-app
+          - worker
+          - redis
+      mem_limit: 1G
+      memswap_limit: 1G
+      cpu_count: 1
+      pids_limit: 128
+      ulimits:
+        nofile:
+          soft: 8192
+          hard: 8192
+volumes:
+    vault:

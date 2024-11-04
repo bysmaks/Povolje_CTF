@@ -34,7 +34,14 @@ def cleaner():
                 
             book.delete()
             deleted_count += 1
-            
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                    logger.info(f"Файл {file_path} успешно удален.")
+                except Exception as e:
+                    logger.error(f"Ошибка при удалении файла {file_path}: {e}")
+            else:
+                logger.warning(f"Файл {file_path} не найден.")
         except FileNotFoundError:
             print(f"File for {book.title} not found.")
             book.delete()

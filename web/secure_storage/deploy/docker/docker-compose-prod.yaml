@@ -1,0 +1,24 @@
+services:
+    app:
+      build:
+        context: ../
+        dockerfile: ./docker/Dockerfile
+      restart: always
+      depends_on:
+        - postgres
+      environment:
+        - JWT_SECRET=in3v3rs33nth4tb1gturtl3h4h4
+        - PG_URL=postgresql://postgres:postgres@postgres:5432/postgres
+      ports:
+        - "9999:9000"
+
+    postgres:
+      image: postgres:15.0
+      restart: always
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+
+      volumes:
+        - ./init_db.sql:/docker-entrypoint-initdb.d/init-db.sql

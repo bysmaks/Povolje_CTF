@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<a href="/" class="logo">SecureStorage</a>
+
+<div class="container">
+    <!-- Крестик для закрытия формы -->
+    <a href="/" class="close-btn">&times;</a>
+
+    <h1>Вход</h1>
+
+    {{ if .ErrorMessage }}
+    <div class="error-message">{{ .ErrorMessage }}</div>
+    {{ end }}
+
+    <form id="signinForm" action="/signin" method="POST">
+        <label>
+            <input id="usernameForm" type="text" placeholder="Имя пользователя" class="input-field" value="{{ .Username }}" required/>
+        </label>
+        <label>
+            <input id="passwordForm" type="password" placeholder="Пароль" class="input-field" value="{{ .Password }}" required/>
+        </label>
+
+        <!-- Скрытое поле для JSON данных -->
+        <input id="data" type="hidden" name="data">
+
+        <button type="submit" class="btn">Войти</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('signinForm').addEventListener('submit', function (event) {
+        // Получаем значения полей
+        const username = document.getElementById("usernameForm").value
+        const password = document.getElementById("passwordForm").value;
+
+        // Формируем JSON и сохраняем его в скрытое поле
+        document.getElementById('data').value = JSON.stringify({username, password});
+    });
+</script>
+</body>
+</html>

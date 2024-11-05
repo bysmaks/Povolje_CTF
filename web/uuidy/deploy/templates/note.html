@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Заметка #{{ note_id }}</h1>
+
+<div class="note-content">
+    <p>{{ content }}</p>
+</div>
+
+{% if is_admin %}
+    <a href="/admin/users/{{ username }}/notes" class="back-button">Назад к списку заметок юзера</a>
+{% else %}
+    <a href="/notes" class="back-button">Назад к списку заметок</a>
+{% endif %}
+{% endblock %}

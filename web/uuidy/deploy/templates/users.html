@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Список пользователей</h1>
+
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>is_admin</th>
+        <th>notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.user_id }}</td>
+        <td>{{ user.username[:24] }}</td>
+        <td>{{ user.is_admin }}</td>
+        <td><a href="/admin/users/{{ user.username }}/notes" class="note-link">Посмотреть</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+     <!-- Пагинация -->
+        {% set total_pages = (total_users_count // limit) + (1 if total_users_count % limit > 0 else 0) %}
+        {% set current_page = (offset // limit) + 1 %}
+        <!-- Пагинация -->
+    <div class="pagination">
+        <!-- Текущая страница -->
+        <div class="page-info">Страница {{ current_page }} из {{ total_pages }}</div>
+
+        <!-- Кнопки навигации -->
+        <div class="pagination-buttons">
+            {% if current_page > 1 %}
+            <a href="?limit={{ limit }}&offset={{ offset - limit }}" class="pagination-button">Предыдущая страница</a>
+            {% endif %}
+
+            {% if offset + limit < total_users_count %}
+            <a href="?limit={{ limit }}&offset={{ offset + limit }}" class="pagination-button">Следующая страница</a>
+            {% endif %}
+        </div>
+    </div>
+</table>
+{% endblock %}

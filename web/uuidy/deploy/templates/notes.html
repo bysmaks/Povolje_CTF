@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{% if is_admin %}
+    Заметки юзера {{ username }}
+{% else %}
+    Ваши Заметки
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if is_admin %}
+    <h2>Заметки юзера <strong>{{ username }}</strong></h2>
+{% else %}
+    <h2>Ваши Заметки</h2>
+{% endif %}
+
+{% if notes_ids %}
+    <ul class="notes-list">
+        {% for note_id in notes_ids %}
+        <li class="note-item">
+            {% if is_admin %}
+                <a href="/admin/users/{{username}}/notes/{{note_id}}" class="note-link">Заметка #{{ note_id }}</a>
+            {% else %}
+                <a href="/notes/{{note_id}}" class="note-link">Заметка #{{ note_id }}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="no-notes-message">У вас пока нет заметок. Начните с добавления новой!</p>
+{% endif %}
+
+{% if is_admin %}
+    <button onclick="window.location.href='/admin/users'" class="add-note-button">Обратно к списку юзеров</button>
+{% else %}
+    <button onclick="window.location.href='/new_note'" class="add-note-button">Новая заметка</button>
+{% endif %}
+
+{% endblock %}

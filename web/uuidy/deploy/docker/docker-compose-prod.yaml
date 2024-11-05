@@ -1,0 +1,21 @@
+services:
+    app:
+      build:
+        context: ../
+        dockerfile: docker/Dockerfile
+      restart: always
+      depends_on:
+        - postgres
+      env_file:
+        - prod.env
+      ports:
+        - "7777:5000"
+
+    postgres:
+      image: postgres:15.0
+      restart: always
+      env_file:
+        - prod.env
+
+      volumes:
+        - ./init_db.sql:/docker-entrypoint-initdb.d/init-db.sql

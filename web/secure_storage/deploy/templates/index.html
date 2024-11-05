@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Безопасное хранение файлов</title>
+    <style>
+        @font-face {
+            font-family: NeueMachina;
+            src: url("/static/NeueMachina-Regular.otf") format("opentype");
+        }
+
+        /* Общие стили */
+        body, html {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'NeueMachina', sans-serif;
+            color: white;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(70, 130, 180, 0.6), rgba(255, 69, 0, 0.6));
+        }
+
+        /* Основное содержание */
+        .container {
+            margin-top: 15%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Заголовок */
+        .container h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        /* Описание сервиса */
+        .container p {
+            font-size: 1.2em;
+            margin: 15px 0 30px;
+            line-height: 1.5;
+        }
+
+        /* Контейнер для кнопок */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            width: 160px; /* Увеличиваем ширину кнопок */
+            padding: 15px 0;
+            font-size: 1em;
+            color: white;
+            background-color: #1e90ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-align: center;
+            font-weight: 500; /* Полужирный текст для кнопок */
+        }
+
+        .btn:hover {
+            background-color: #1c86ee;
+        }
+
+        /* Название сервиса в левом верхнем углу */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<a href="/" class="logo">SecureStorage</a>
+
+<div class="container">
+    <h1>Добро пожаловать в SecureStorage</h1>
+    <p>Наш сервис обеспечивает высокую скорость загрузки и надежную защиту данных. Ваша информация всегда под контролем,
+        хранится безопасно и доступна только вам.</p>
+    <div class="button-container">
+        <button class="btn" onclick="location.href='/signup';">Регистрация</button>
+        <button class="btn" onclick="location.href='/signin';">Войти</button>
+    </div>
+</div>
+</body>
+</html>

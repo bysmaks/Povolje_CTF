@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<h2>Вход</h2>
+
+{% if error %}
+<div class="error-message">{{ error }}</div>
+{% endif %}
+
+<form action="/signin" method="post">
+    <label for="username">Юзернейм:</label>
+    <input type="text" id="username" name="username" value="{{request.form.username}}" required>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" value="{{request.form.password}}" required>
+    <button type="submit">Войти</button>
+</form>
+<button class="alt-login" onclick="window.location.href='/send_tg_link'">Войти через Telegram</button>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Настройки аккаунта: {{ g.user.username }}</h2>
+
+    <!-- Статус подключения к Телеграму -->
+    <div class="status">
+        {% if is_tg_connected %}
+            <span>ТГ подключен: ✅</span>
+        {% else %}
+            <span>ТГ подключен: ❌</span>
+        {% endif %}
+    </div>
+
+    <!-- Кнопка для подключения Телеграма -->
+     <a href="/link_tg" class="connect-button" target="_blank">Подключить телеграм для входа</a>
+
+<!-- Скрипт для автоматического обновления страницы каждые 5 секунд -->
+<script>
+    // Обновление страницы каждые 5 секунд
+    setInterval(() => {
+        window.location.reload();
+    }, 5000);
+</script>
+{% endblock %}

@@ -25,9 +25,8 @@ IP:PORT
 ## Хинты
 
 HINT #1:  
-- Локально: [hint_1_sandwich.jpg](hints/hint_1_sandwich.jpg)
-- На imgBB: https://ibb.co/5FFZTqB
-- Намек на JSON сериализацию в Go. JSON скобки и гофер + по поиску картинки можно найти статью про это.
+- Локально: [hint1.png](hints/hint1.png)
+- На imgBB: https://ibb.co/ZKNsSMv
 
 ## Решение
 

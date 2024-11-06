@@ -1,4 +1,4 @@
-No cheating | Medium | Misc
+# No cheating | Medium | Misc
 
 ## Информация
 

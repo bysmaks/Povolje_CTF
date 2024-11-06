@@ -1,0 +1,10 @@
+version: '3'
+services:
+  adeptusmechanicus:
+    build: .
+    environment:
+      - FLAG=ctf{sup3r_asc11_@rt!}
+    ports:
+     - "3131:3131"
+
+

@@ -1,6 +1,8 @@
-# ppc | olproga_2300_reytinga | medium
+# olproga_2300_reytinga | medium | ppc
 
 ### Информация
+<обязательно тут что-то будет полезное, ага>
+`nc | curl host:port`
 
 ### Деплой
 ```shell

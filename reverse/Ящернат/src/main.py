@@ -26,6 +26,7 @@ def main():
     password = input("Причина пропуска? ")
     if len(password) != 38:
         print("Принича не уважительная. Вы отчислены!")
+        return
     stage1 = st1(password)
     stage2 = st2(stage1)
     stage3 = st3(stage2)

@@ -1,0 +1,9 @@
+services:
+  server:
+    build: .
+    restart: always
+    ports:
+      - 11337:8888
+    environment:
+      - FLAG=ctf
+

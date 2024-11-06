@@ -1,0 +1,9 @@
+[package]
+name = "olproga_2300_reytinga"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gcd = "2.3.0"
+prime_factorization = "1.0.4"
+threadpool = "1.8.1"

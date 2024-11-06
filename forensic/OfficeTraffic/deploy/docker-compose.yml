@@ -1,0 +1,54 @@
+name: demo
+
+services:
+  openvpn:
+    cap_add:
+     - NET_ADMIN
+    image: kylemanna/openvpn
+    container_name: openvpn
+    ports:
+     - "1194:1194/udp"
+    restart: always
+    environment:
+      - OPENVPN_PROTO=udp
+      - OPENVPN_PORT=1194
+      - OPENVPN_SERVER=10.0.0.0/16
+      - OPENVPN_CLIENT_TO_CLIENT=true
+      - OPENVPN_DUPLICATE_CN=true
+      - OPENVPN_TLS_AUTH=true
+    networks:
+      - vpn-net
+    volumes:
+     - ./config:/etc/openvpn
+    sysctls:
+     - net.ipv4.ip_forward=1
+     - net.ipv6.conf.default.forwarding=1
+     - net.ipv6.conf.all.forwarding=1
+
+  tele:
+    image: mlan/asterisk
+    networks:
+      vpn-net:
+        ipv4_address: 10.0.0.100
+    cap_add:
+      - sys_ptrace                          # Only here to help testing
+      - net_admin                           # Allow NFT, used by AutoBan
+      - net_raw                             # Allow NFT, used by AutoBan
+    environment:
+      - SYSLOG_LEVEL=${SYSLOG_LEVEL-4}      # Logging
+      - HOSTNAME=${TELE_SRV-tele}.${DOMAIN-docker.localhost}
+      - WEBSMSD_PORT=${WEBSMSD_PORT-80}     # WEBSMSD internal port
+    depends_on:
+      - openvpn
+    volumes:
+      - ./asterisk-config:/etc/asterisk
+      - ./voicemail:/var/spool/asterisk/voicemail/
+
+
+networks:
+  vpn-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.0.0/16

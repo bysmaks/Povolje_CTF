@@ -1,0 +1,44 @@
+/* styles.css */
+body {
+    background-color: #f3e6f8;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.card-title {
+    color: #6f42c1; /* Bootstrap's primary color variant for purple */
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5a2d91; /* Darker shade of purple for hover effect */
+}
+
+#result {
+    font-size: 1.1em;
+    color: #6f42c1;
+}
+
+.result-block {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    width: auto;
+}
+.result-block code {
+    display: block;
+    text-align: left;
+    white-space: pre;
+    width: auto;
+    color: black;
+}

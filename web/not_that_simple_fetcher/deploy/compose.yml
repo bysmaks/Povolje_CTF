@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5464:80"
+    environment:
+      - APACHE_RUN_USER=www-data
+      - APACHE_RUN_GROUP=www-data
+      - FLAG=ctf{w0w_n0w_y0u_kn0w_wh47_r3d1r3c7_70_l0c4lh057_15}
+

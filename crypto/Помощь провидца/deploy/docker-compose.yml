@@ -1,0 +1,8 @@
+services:
+  crypto-server:
+    build: .
+    restart: always
+    ports:
+     - "8080:8080"
+    environment:
+      - AES_SECRET=46XX3eKRJB349Mpb

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Заметки{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body>
+<nav>
+    <ul>
+        {% if g.is_authorized %}
+        {% if g.user.is_admin %}
+        <li><a href="/admin/users">Админка</a></li>
+        {% endif %}
+
+        <li><a href="/notes">Заметки</a></li>
+        <li><a href="/settings">Настройки</a></li>
+        <li><a href="/logout">Выйти</a></li>
+        {% else %}
+        <li><a href="/signup">Регистрация</a></li>
+        <li><a href="/signin">Войти</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

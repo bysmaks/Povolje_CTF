@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Создать новую заметку</h1>
+
+{% if error %}
+<div class="error-message">
+    {{ error }}
+</div>
+{% endif %}
+
+<form method="POST" action="/new_note">
+    <label for="content">Содержание заметки</label>
+    <textarea id="content" name="content" rows="5" required>{{ request.form.content }}</textarea>
+
+    <button type="submit">Сохранить заметку</button>
+</form>
+{% endblock %}

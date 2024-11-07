@@ -5,5 +5,5 @@ services:
     ports:
       - 11337:8888
     environment:
-      - FLAG=ctf
+      - FLAG="ctf{1_f3ll_1n_l0v3_w1th_y0u_1n_frAct10n5}"
 

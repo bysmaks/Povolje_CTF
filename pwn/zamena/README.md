@@ -25,6 +25,10 @@ Perepisivaem dlinu stroki potomusho operator [] ne detectit oob. zatem rop
 
 [Эксплоит](solve/sploit.py)
 
+## Hints
+
+Overwrite std::string size to get leak
+
 ## Флаг
 
 `ctf{mi_uspeshno_zamenily_vsyo}`

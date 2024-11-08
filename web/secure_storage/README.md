@@ -11,7 +11,7 @@
 Деплой сервиса
 ```sh
 cd docker
-docker compose -f docker-compose-prod.yaml up -d
+docker compose -f docker-compose-prod.yaml -p secure_storage up -d
 ```
 
 Сервис поднимется на 9999 порту. Флаг и место его хранения можно менять в Dockerfile.

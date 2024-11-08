@@ -18,7 +18,7 @@
 Деплой сервиса
 ```sh
 cd docker
-docker compose -f docker-compose-prod.yaml up -d
+docker compose -f docker-compose-prod.yaml -p uuidy up -d
 ```
 
 После деплоя сервиса, хеш пароля админа (для флага), можем достать командой:

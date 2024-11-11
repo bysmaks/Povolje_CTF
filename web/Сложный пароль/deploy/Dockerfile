@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt install nginx -y
 RUN apt install gettext-base -y
 
+RUN rm /etc/nginx/sites-enabled/default
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf.template 
 COPY ./www.conf /usr/local/etc/php-fpm.d/www.conf

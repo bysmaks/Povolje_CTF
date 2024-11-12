@@ -1,0 +1,43 @@
+services:
+    secure_storage_app:
+      build:
+        context: ../
+        dockerfile: ./docker/Dockerfile
+
+      restart: always
+      depends_on:
+        secure_storage_postgres:
+          condition: service_healthy
+
+      environment:
+        - JWT_SECRET=in3v3rs33nth4tb1gturtl3h4h4
+        - PG_URL=postgresql://postgres:postgres@secure_storage_postgres:5432/postgres
+
+      ports:
+        - "9999:9000"
+      networks:
+        - secure-storage-network
+
+    secure_storage_postgres:
+      image: postgres:15.0
+      restart: always
+      healthcheck:
+        test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER" ]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+
+      networks:
+        - secure-storage-network
+
+      volumes:
+        - ./init_db.sql:/docker-entrypoint-initdb.d/init-db.sql
+
+networks:
+  secure-storage-network:
+    driver: bridge

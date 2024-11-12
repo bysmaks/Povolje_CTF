@@ -31,11 +31,11 @@ docker compose exec uuidy_postgres psql -U postgres -d postgres -c "SELECT usern
 
 HINT #1:  
 - Лкально: [hint1.jpg](hints/hint1.jpg)
-- На imgBB: https://ibb.co/z6jGj9L
+- На imgBB: https://ibb.co/C0cCpSB
 
 HINT #2:
 - Локально: [hint2.jpg](hints/hint2.jpg)
-- На imgBB: https://ibb.co/Xb1qDTQ
+- На imgBB: https://ibb.co/ZWfyGSW
 
 ## Решение
 

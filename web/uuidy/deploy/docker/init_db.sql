@@ -13,8 +13,8 @@ CREATE TABLE notes (
     PRIMARY KEY (user_id, note_id)
 );
 
-CREATE USER ro_user WITH PASSWORD 'ganggucciganggucciganggucciganggucciganggucciganggucci';
+CREATE USER ro_user WITH PASSWORD 'ro_user';
 GRANT CONNECT ON DATABASE postgres TO ro_user;
 GRANT USAGE ON SCHEMA public TO ro_user;
 GRANT SELECT ON TABLE Users, Notes TO ro_user;
-ALTER DEFAULT PRIVILEGES FOR ROLE aksjdqjwehjasdk IN SCHEMA public REVOKE ALL ON TABLES FROM ro_user;
+ALTER DEFAULT PRIVILEGES FOR ROLE ro_user IN SCHEMA public REVOKE ALL ON TABLES FROM ro_user;

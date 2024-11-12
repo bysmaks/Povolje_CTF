@@ -4,3 +4,4 @@ cachetools==5.5.0
 PyJWT==2.9.0
 PyJWT==2.9.0
 quart==0.19.8
+uvicorn==0.32.0

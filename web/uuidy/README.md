@@ -1,46 +1,41 @@
-# uuidy | hard | web
+# uuidy | web | hard
 
 ## Информация
 
-> Заметки! Заметки! Заметки! Больше заметок богу заметок!
-> 
-> http://<ip>:5000
-> 
-> Флаг `ctf{<password_hash>}`, где <password_hash> - хеш пароля админа.
+Заметки! Заметки! Заметки! Больше заметок богу заметок!
 
-## Deploy
+Флаг `ctf{<password_hash>}`, где <password_hash> - хеш пароля админа.
 
-Перед деплоем нужно настроить некоторые енвы в prod.env.
+## Деплой
+
+Перед деплоем нужно настроить некоторые енвы в [deploy/docker/docker-compose.yaml](deploy/docker/docker-compose.yaml).
 - Выставите валидный токен телеграм бота в переменной `TG_BOT_TOKEN`.  
-- В `SERVICE_HOST` впишите адрес и порт сервера на котором деплоите, 
-для примера, если деплоите локально, то вписывайте `127.0.0.1:7777` (7777 - порт из компоуза).
+- В `SERVICE_HOST` впишите адрес сервера и порт на котором деплоите сервис, например `185.74.123.12:7777` (7777 - порт из компоуза).
 
 Деплой сервиса
 ```sh
-cd docker
-docker compose -f docker-compose-prod.yaml -p uuidy up -d
+cd deploy/docker
+docker compose -f docker-compose.yaml up -d
 ```
 
 После деплоя сервиса, хеш пароля админа (для флага), можем достать командой:
-`
-docker compose -f docker-compose-prod.yaml exec postgres psql -U aksjdqjwehjasdk -d postgres -c "SELECT username, password_hash FROM users WHERE username='admin';"
-`
+```
+docker compose exec uuidy_postgres psql -U postgres -d postgres -c "SELECT username, password_hash FROM users WHERE username='admin';"
+```
 
 ## Выдать участникам
 
 Скинуть архив: [public/uuidy.tar.gz](public/uuidy.tar.gz).
 
-IP:PORT
-
 ## Хинты
 
 HINT #1:  
 - Лкально: [hint1.jpg](hints/hint1.jpg)
-- На imgBB: https://ibb.co/C0cCpSB
+- На imgBB: https://ibb.co/z6jGj9L
 
 HINT #2:
 - Локально: [hint2.jpg](hints/hint2.jpg)
-- На imgBB: https://ibb.co/ZWfyGSW
+- На imgBB: https://ibb.co/Xb1qDTQ
 
 ## Решение
 
@@ -68,4 +63,10 @@ HINT #2:
 
 ## Флаг
 
-`ctf{68aecb809da897c7ec29640f2ed222682ffe93f38617592678db42b27b5040e2}`
+`ctf{178b3c72fb24a69e1e3d8a983f35eb8f1dc4abe55d0ff69c7a7a1a3b933989aa}`
+
+Для проверки, что хэш пароля админа не изменился, можно достать его командой:
+```sh
+cd deploy/docker
+docker compose exec uuidy_postgres psql -U postgres -d postgres -c "SELECT username, password_hash FROM users WHERE username='admin';"
+```

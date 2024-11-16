@@ -20,6 +20,11 @@ bash -c "openssl req -new -x509 -key asterisk-config/keys/asterisk.key -out aste
 python3 changer.py
 if [ $? -eq 0 ]
 then
+  bash -c "cd pcapfix && make && ./pcapfix -d ../../public/release.pcapng -o ../../public/fix_release.pcapng"
+  if [ -f ../public/fix_release.pcapng ]; then
+      rm ../public/release.pcapng
+      mv ../public/fix_release.pcapng ../public/release.pcapng
+  fi
   bash -c "docker compose up -d"
 fi
 

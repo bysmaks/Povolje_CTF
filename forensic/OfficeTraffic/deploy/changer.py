@@ -20,14 +20,14 @@ with open("../public/release.pcapng", "wb") as f:
         elif i.startswith(b"EfMeTX0ZqRo7zBhKpeCwlAfh"):
             payload = b""
 ##            print(k)
-            payload = i.replace(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShp", cert_new[cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut")][:53])
+            payload = i.replace(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShp", cert_new[cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut")][:50])
 ##            print(cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut") + 1, i, '>', payload)
             f.write(payload + b'\n')
             m = k
             for j in data1.split(b"\n")[k + 1:]:
                 m += 1
                 if b'jTTcwMOyGut' in j:
-                    payload = j.replace(b'jTTcwMOyGut', cert_new[cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut")][53:])
+                    payload = j.replace(b'jTTcwMOyGut', cert_new[cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut")][50:])
 ##                    print(cert_old.index(b"EfMeTX0ZqRo7zBhKpeCwlAfhC7vOOMnJVEHMtFzbjILHcarxWlShpjTTcwMOyGut") + 1, j, '>', payload)
                     f.write(payload + b'\n')
                     break

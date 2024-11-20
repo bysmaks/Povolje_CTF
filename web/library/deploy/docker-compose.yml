@@ -59,6 +59,11 @@ services:
       nofile:
         soft: 16384
         hard: 16384
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'Healthcheck: OK'"]
+      interval: 2m
+      timeout: 5s
+      retries: 4
   worker-cleaner:
     build:
       context: .
@@ -84,6 +89,11 @@ services:
       nofile:
         soft: 16384
         hard: 16384
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'Healthcheck: OK'"]
+      interval: 2m
+      timeout: 5s
+      retries: 4
   nginx:
       restart: unless-stopped
       build:

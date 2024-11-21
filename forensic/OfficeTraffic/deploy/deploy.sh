@@ -17,7 +17,9 @@ config/openvpn.conf.bak > config/openvpn.conf
 bash -c "docker compose run --rm openvpn easyrsa build-client-full test nopass"
 bash -c "docker compose run --rm openvpn ovpn_getclient test > certificate.ovpn"
 bash -c "openssl req -new -x509 -key asterisk-config/keys/asterisk.key -out asterisk-config/keys/asterisk.crt -days 365"
-python3 changer.py
+python3 -m venv venv
+venv/bin/python3 -m pip install -r requirements.txt
+venv/bin/python3 releaser.py
 if [ $? -eq 0 ]
 then
   bash -c "cd pcapfix && ./pcapfix -d ../../public/release.pcapng -o ../../public/fix_release.pcapng"
